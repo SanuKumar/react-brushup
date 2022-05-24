@@ -4,7 +4,7 @@ import Home from "./components/Home/Home";
 import PhotoAlbum from "./components/PhotoAlbum/PhotoAlbum";
 import Header from "./components/Header/Header";
 import User from "./components/Users/User_ContextAPI";
-import ParentMemo from "./components/Memo/Parent";
+import ParentMemo from "./components/Memo_Callback/Parent";
 import { HOC, HOCRed, HOCGreen } from "./components/HOC";
 import ErrorBoundary from "./components/ErrorBoundry";
 import UseReducerComponent from "./components/UseReducerComponent";

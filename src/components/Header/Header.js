@@ -15,7 +15,7 @@ const Header = () => {
         <Link to="/user">Users-ContextAPI</Link>
       </p>
       <p>
-        <Link to="/memo">React Memo</Link>
+        <Link to="/memo">React Memo and Callback</Link>
       </p>
       <p>
         <Link to="/hoc">HOC</Link>
