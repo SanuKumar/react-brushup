@@ -7,6 +7,7 @@ import User from "./components/Users/User_ContextAPI";
 import ParentMemo from "./components/Memo/Parent";
 import { HOC, HOCRed, HOCGreen } from "./components/HOC";
 import ErrorBoundary from "./components/ErrorBoundry";
+import UseReducerComponent from "./components/UseReducerComponent";
 import "./App.css";
 
 const UserData = createContext();
@@ -55,6 +56,7 @@ const App = () => {
             </>
           }
         />
+        <Route exact path="/useReducer" element={<UseReducerComponent />} />
       </Routes>
     </ErrorBoundary>
   );

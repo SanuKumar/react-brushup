@@ -20,6 +20,9 @@ const Header = () => {
       <p>
         <Link to="/hoc">HOC</Link>
       </p>
+      <p>
+        <Link to="/useReducer">Use Reducer</Link>
+      </p>
     </nav>
   );
 };
