@@ -1,25 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState, createContext } from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/Home/Home";
+import PhotoAlbum from "./components/PhotoAlbum/PhotoAlbum";
+import Header from "./components/Header/Header";
+import User from "./components/Users/User_ContextAPI";
+import ParentMemo from "./components/Memo/Parent";
+import { HOC, HOCRed, HOCGreen } from "./components/HOC";
+import "./App.css";
 
-function App() {
+const UserData = createContext();
+
+const App = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
+  const fetchUser = async () => {
+    let data = await fetch(`https://jsonplaceholder.typicode.com/users`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => res);
+    setUsers(data);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/photos" element={<PhotoAlbum />} />
+        <Route
+          exact
+          path="/user"
+          element={
+            <UserData.Provider value={users}>
+              <User />
+            </UserData.Provider>
+          }
+        />
+        <Route exact path="/memo" element={<ParentMemo />} />
+        <Route
+          exact
+          path="/hoc"
+          element={
+            <div>
+              <HOCRed component={HOC} />
+              <HOCGreen component={HOC} />
+            </div>
+          }
+        />
+      </Routes>
+    </>
   );
-}
+};
+
+export { UserData };
 
 export default App;

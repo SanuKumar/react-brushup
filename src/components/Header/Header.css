@@ -1,0 +1,10 @@
+.header {
+  background-color: gray;
+  display: flex;
+}
+
+a {
+  padding: 1rem;
+  text-decoration: none;
+  color: white;
+}
