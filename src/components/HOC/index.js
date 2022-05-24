@@ -12,7 +12,6 @@ export const HOC = () => {
 };
 
 export function HOCRed(props) {
-  console.log(props);
   return (
     <h2 style={{ backgroundColor: "red", width: 100, textAlign: "center" }}>
       <props.component />

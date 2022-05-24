@@ -6,6 +6,7 @@ import Header from "./components/Header/Header";
 import User from "./components/Users/User_ContextAPI";
 import ParentMemo from "./components/Memo/Parent";
 import { HOC, HOCRed, HOCGreen } from "./components/HOC";
+import ErrorBoundary from "./components/ErrorBoundry";
 import "./App.css";
 
 const UserData = createContext();
@@ -29,10 +30,10 @@ const App = () => {
     setUsers(data);
   };
   return (
-    <>
+    <ErrorBoundary>
       <Header />
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route exact path="/" element={<Home component={HOC} />} />
         <Route exact path="/photos" element={<PhotoAlbum />} />
         <Route
           exact
@@ -48,14 +49,14 @@ const App = () => {
           exact
           path="/hoc"
           element={
-            <div>
+            <>
               <HOCRed component={HOC} />
               <HOCGreen component={HOC} />
-            </div>
+            </>
           }
         />
       </Routes>
-    </>
+    </ErrorBoundary>
   );
 };
 
