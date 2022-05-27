@@ -13,39 +13,19 @@ const Header = () => {
         >
           <span>Home</span>
         </NavLink>
-        <NavLink
-          activeClassName="active"
-          className="main-header__item"
-          to={"/photos"}
-        >
+        <NavLink className="main-header__item" to={"/photos"}>
           <span>PhotoAlbu-Axios</span>
         </NavLink>
-        <NavLink
-          activeClassName="active"
-          className="main-header__item"
-          to="/user"
-        >
+        <NavLink className="main-header__item" to="/user">
           <span>Users-ContextAPI</span>
         </NavLink>
-        <NavLink
-          activeClassName="active"
-          className="main-header__item"
-          to="/memo"
-        >
+        <NavLink className="main-header__item" to="/memo">
           <span>React Memo and Callback</span>
         </NavLink>
-        <NavLink
-          activeClassName="active"
-          className="main-header__item"
-          to="/hoc"
-        >
+        <NavLink className="main-header__item" to="/hoc">
           <span>HOC</span>
         </NavLink>
-        <NavLink
-          activeClassName="active"
-          className="main-header__item"
-          to="/useReducer"
-        >
+        <NavLink className="main-header__item" to="/useReducer">
           <span>Use Reducer</span>
         </NavLink>
       </nav>
