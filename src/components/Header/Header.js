@@ -1,29 +1,55 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Header.css";
 
 const Header = () => {
   return (
-    <nav className="header">
-      <p>
-        <Link to={"/"}>Home</Link>|
-      </p>
-      <p>
-        <Link to={"/photos"}>PhotoAlbu-Axios</Link>|
-      </p>
-      <p>
-        <Link to="/user">Users-ContextAPI</Link>|
-      </p>
-      <p>
-        <Link to="/memo">React Memo and Callback</Link>|
-      </p>
-      <p>
-        <Link to="/hoc">HOC</Link>|
-      </p>
-      <p>
-        <Link to="/useReducer">Use Reducer</Link>|
-      </p>
-    </nav>
+    <div className="main-header">
+      <nav className="header">
+        <NavLink
+          activeClassName="active"
+          className="main-header__item"
+          to={"/"}
+        >
+          <span>Home</span>
+        </NavLink>
+        <NavLink
+          activeClassName="active"
+          className="main-header__item"
+          to={"/photos"}
+        >
+          <span>PhotoAlbu-Axios</span>
+        </NavLink>
+        <NavLink
+          activeClassName="active"
+          className="main-header__item"
+          to="/user"
+        >
+          <span>Users-ContextAPI</span>
+        </NavLink>
+        <NavLink
+          activeClassName="active"
+          className="main-header__item"
+          to="/memo"
+        >
+          <span>React Memo and Callback</span>
+        </NavLink>
+        <NavLink
+          activeClassName="active"
+          className="main-header__item"
+          to="/hoc"
+        >
+          <span>HOC</span>
+        </NavLink>
+        <NavLink
+          activeClassName="active"
+          className="main-header__item"
+          to="/useReducer"
+        >
+          <span>Use Reducer</span>
+        </NavLink>
+      </nav>
+    </div>
   );
 };
 

@@ -1,16 +1,24 @@
-.header {
-  background-color: gray;
-  display: flex;
+.main-header {
+  height: 3.2rem;
+  background-color: rgb(107, 157, 21);
+  padding: 0 1.5rem;
   width: 100%;
-  overflow-y: scroll;
 }
 
-a {
-  padding: 1rem;
+.header {
+  display: flex;
+  overflow-y: scroll;
+  height: 100%;
+  align-items: center;
+}
+
+.main-header__item {
+  margin: 0 0.5rem;
   text-decoration: none;
   color: white;
 }
 
-p {
-  text-align: right;
+.main-header__item span:hover,
+.active {
+  color: red;
 }
