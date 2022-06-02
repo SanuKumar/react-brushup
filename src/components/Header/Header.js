@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "./Header.css";
 
-const Header = () => {
+const Header = ({ loggeMe }) => {
+  const [log, setLog] = useState(false);
+
+  useEffect(() => {}, [log]);
+
+  const handleSwitch = () => {
+    if (log) {
+      loggeMe(true);
+      setLog(false);
+    } else {
+      loggeMe(false);
+      setLog(true);
+    }
+  };
+
   return (
     <div className="main-header">
       <nav className="header">
         <NavLink
-          activeClassName="active"
+          activeclassname="active"
           className="main-header__item"
           to={"/"}
         >
@@ -28,6 +42,7 @@ const Header = () => {
         <NavLink className="main-header__item" to="/useReducer">
           <span>Use Reducer</span>
         </NavLink>
+        <button onClick={handleSwitch}>{log ? "Switch" : "Switch Back"}</button>
       </nav>
     </div>
   );

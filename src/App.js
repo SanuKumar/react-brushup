@@ -8,12 +8,27 @@ import ParentMemo from "./components/Memo_Callback/Parent";
 import { HOC, HOCRed, HOCGreen } from "./components/HOC";
 import ErrorBoundary from "./components/ErrorBoundry";
 import UseReducerComponent from "./components/UseReducerComponent";
+import Helmet, { HelmetProvider } from "react-helmet-async";
 import "./App.css";
 
 const UserData = createContext();
 
+const Sanu = () => {
+  return (
+    <div>
+      <li>Name</li>
+      <li>Date</li>
+    </div>
+  );
+};
+
 const App = () => {
   const [users, setUsers] = useState([]);
+  const [logged, setLogged] = useState(false);
+
+  const loggeMe = (key) => {
+    setLogged(key);
+  };
 
   useEffect(() => {
     fetchUser();
@@ -32,32 +47,48 @@ const App = () => {
   };
   return (
     <ErrorBoundary>
-      <Header />
-      <Routes>
-        <Route exact path="/" element={<Home component={HOC} />} />
-        <Route exact path="/photos" element={<PhotoAlbum />} />
-        <Route
-          exact
-          path="/user"
-          element={
-            <UserData.Provider value={users}>
-              <User />
-            </UserData.Provider>
-          }
-        />
-        <Route exact path="/memo" element={<ParentMemo />} />
-        <Route
-          exact
-          path="/hoc"
-          element={
-            <>
-              <HOCRed component={HOC} />
-              <HOCGreen component={HOC} />
-            </>
-          }
-        />
-        <Route exact path="/useReducer" element={<UseReducerComponent />} />
-      </Routes>
+      <HelmetProvider>
+        <Header loggeMe={loggeMe} />
+        {logged ? (
+          <>
+            <Routes>
+              <Route exact path="/" element={<Home component={HOC} />} />
+              <Route exact path="/photos" element={<PhotoAlbum />} />
+              <Route
+                exact
+                path="/user"
+                element={
+                  <UserData.Provider value={users}>
+                    <User />
+                  </UserData.Provider>
+                }
+              />
+              <Route exact path="/memo" element={<ParentMemo />} />
+              <Route
+                exact
+                path="/hoc"
+                element={
+                  <>
+                    <HOCRed component={HOC} />
+                    <HOCGreen component={HOC} />
+                  </>
+                }
+              />
+              <Route
+                exact
+                path="/useReducer"
+                element={<UseReducerComponent />}
+              />
+            </Routes>
+          </>
+        ) : (
+          <>
+            <Routes>
+              <Route exact path="/" element={<Sanu />} />
+            </Routes>
+          </>
+        )}
+      </HelmetProvider>
     </ErrorBoundary>
   );
 };
